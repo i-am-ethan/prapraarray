@@ -1,22 +1,41 @@
 "use strict";
-
-const scores = [1, 2, 3, 4, 5];
-//最後に追加する
-scores.push(6);
-//先頭から削除する
-//shiftは1つしか削除できないので()内になにも入れる必要はない
-scores.shift();
-
-//2,3,4,5,6
-
-//spliceで途中の要素を削除する
-//splice(変化が開始する位置,削除数);
-scores.splice(1, 2);
-
-//2,5,6
-//slice(変化が開始する位置,削除数,追加する要素・・・);
-scores.splice(1, 0, 300);
-//2,300,5,6
+//スプレット構文
+const addScores = [1, 2, 3];
+const scores = [1, 2, 3, 4, 5, ...addScores];
 
 console.log(scores);
 
+function sum(a, b, c) {
+  console.log(a + b + c);
+}
+
+sum(...addScores);
+//sum(1,2,3)と同じ意味になる。
+
+//分割代入
+
+{
+  const scores = [1, 2, 3, 4];
+  const [a, b, c, d] = scores;
+  console.log(a);
+  console.log(b);
+  console.log(c);
+  console.log(d);
+}
+
+{
+  const scores = [1, 2, 3, 4];
+  const [a, b, ...othres] = scores;
+  console.log(a);
+  console.log(b);
+  console.log(othres);
+}
+
+//値の交換
+{
+  let x = 1;
+  let y = 2;
+  [x, y] = [y, x];
+  console.log(x);
+  console.log(y);
+}
